@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<div class="max-w-md mx-auto mt-10 bg-white shadow-lg rounded-lg overflow-hidden">
+    <div class="text-2xl py-4 px-6 bg-gray-900 text-white text-center font-bold uppercase">
+        Modify Permission
+    </div>
+    <form class="py-4 px-6" action="" method="POST">
+        {% csrf_token %}
+        <div class="mb-4">
+            {{ form.username.label_tag }}
+            {{ form.username }}
+        </div>
+        <div class="mb-4">
+            {{ form.value.label_tag }}
+            {{ form.value }}
+        </div>
+        {% if form.fields|length > 2 %}
+        <div class="mb-4">
+            {{ form.decision.label_tag }}
+            {{ form.decision }}
+        </div>
+        {% endif %}
+        <div class="flex items-center justify-center mb-4">
+            <button
+                class="bg-gray-900 text-white py-2 px-4 rounded hover:bg-gray-800 focus:outline-none focus:shadow-outline"
+                type="submit">
+                Save Changes
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock content %}

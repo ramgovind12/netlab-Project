@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<main class="container mx-auto mt-8 p-4 flex justify-between">
+    <section class="p-6 w-1/2 mr-4">
+        <div class="max-w-md mx-auto mt-10 bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="text-2xl py-4 px-6 bg-gray-900 text-white text-center font-bold uppercase">
+                Modify Permission
+            </div>
+            <form class="py-4 px-6" action="" method="POST">
+                {% csrf_token %}
+                <div class="mb-4">
+                    {{ form.username.label_tag }}
+                    {{ form.username }}
+                </div>
+                <div class="mb-4">
+                    {{ form.value.label_tag }}
+                    {{ form.value }}
+                </div>
+                {% if form.fields|length > 2 %}
+                <div class="mb-4">
+                    {{ form.decision.label_tag }}
+                    {{ form.decision }}
+                </div>
+                {% endif %}
+                <div class="flex items-center justify-center mb-4">
+                    <button
+                        class="bg-gray-900 text-white py-2 px-4 rounded hover:bg-gray-800 focus:outline-none focus:shadow-outline"
+                        type="submit">
+                        Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+    <section class="p-6 w-1/2 ml-4">
+        <div class="max-w-md mx-auto mt-10 bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="text-2xl py-4 px-6 bg-gray-900 text-white text-center font-bold uppercase">
+                Delete Record
+            </div>
+            <br>
+            <div class="py-4 px-6">
+                <div class="text-lg font-bold">Username: {{ candidate.username }}</div><br>
+                <div class="text-lg font-bold">Value: {{ candidate.value }}</div><br>
+                <div class="text-lg font-bold">Status: {{ candidate.status }}</div><br>
+
+                <br><br><br>
+                <div class="flex items-center justify-center mb-4">
+                    <form action="{% url 'delete' candidate.id %}" method="post">
+                        {% csrf_token %}
+                        <button
+                            class="bg-black text-white py-2 px-4 rounded hover:bg-gray-900 focus:outline-none focus:shadow-outline"
+                            type="submit">
+                            Delete Record
+                        </button>
+                    </form>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}

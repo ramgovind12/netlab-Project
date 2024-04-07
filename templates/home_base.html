@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<br>
+<h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-black text-center">Submit Candidate Detail's</h1>
+
+<br>
+<div class="max-w-md mx-auto mt-10 bg-white shadow-lg rounded-lg overflow-hidden">
+    <div class="text-2xl py-4 px-6 bg-gray-900 text-white text-center font-bold uppercase">
+        
+    </div>
+    <form class="py-4 px-6" method="post">
+        {% csrf_token %}
+        <div class="mb-4">
+            {{ form.username.label_tag }}
+            {{ form.username }}
+        </div>
+        <div class="mb-4">
+            {{ form.value.label_tag }}
+            {{ form.value }}
+        </div>
+        <!-- {% if form.fields|length > 2 %}
+        <div class="mb-4">
+            {{ form.decision.label_tag }}
+            {{ form.decision }}
+        </div>
+        {% endif %} -->
+        <div class="flex items-center justify-center mb-4">
+            <button class="bg-gray-900 text-white py-2 px-4 rounded hover:bg-gray-800 focus:outline-none focus:shadow-outline" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+
+
+
+{% endblock content %}
+    
